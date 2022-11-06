@@ -1,0 +1,44 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { AppProvider } from "./context/context";
+import { HelmetProvider } from "react-helmet-async";
+
+const httpLink = createHttpLink({
+  uri: "https://petgram-brycot.vercel.app/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = window.sessionStorage.getItem("token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <ApolloProvider client={client}>
+        <AppProvider>
+          <App />
+        </AppProvider>
+      </ApolloProvider>
+    </HelmetProvider>
+  </React.StrictMode>
+);
