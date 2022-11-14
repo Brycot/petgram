@@ -1,7 +1,7 @@
 {
-    "name": "curso-platzi-react-avanzado",
+    "name": "petgram",
     "version": "1.0.0",
-    "description": "**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev",
+    "description": "",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,15 +11,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/midudev/curso-platzi-react-avanzado.git"
+        "url": "https://github.com/Brycot/petgram"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/midudev/curso-platzi-react-avanzado/issues"
-    },
-    "homepage": "https://github.com/midudev/curso-platzi-react-avanzado#readme",
+    "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.19.6",
         "@babel/plugin-transform-runtime": "^7.19.6",
